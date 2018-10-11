@@ -1,15 +1,27 @@
 package edu.upc.eetac.dsa;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class FactoryTest {
+
+
+    //Let's instantiate the class Command
+    Command c;
+
+    //We erase the content of the Command c
+    @After
+    public void tearDown(){
+        c = null;
+    }
 
     //In this test we try if loads the classes properly
     @Test
     public void testFactory() {
         //First we use the class loader
-        Command c = Factory.getInstance().getCommand("C1");
+        c = Factory.getInstance().getCommand("C1");
         Assert.assertEquals("C1", c.execute());
 
         //Once we have it in the HashMap, we only have to pick up in the cache
